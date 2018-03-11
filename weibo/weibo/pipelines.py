@@ -18,14 +18,8 @@ class WeiboPipeline(object):
         )
         db = connection[settings['MONGODB_DB']]
         self.collection = db[settings['MONGODB_COLLECTION']]
+        
     def process_item(self, item, spider):
-        valid = True
-        for data in item:
-            if not data:
-                valid = False
-                raise DropItem("Missing {0}!".format(data))
-        if valid:
-            self.collection.insert(dict(item))
-            log.msg("Question added to MongoDB database!",
-                    level=log.DEBUG, spider=spider)
+        #update方法，第一个参数传入查询条件，url_token，第二个参数传入字典类型的对象，item，第三个参数传入True，如果查询数据存在的话就更新，不存在的话就插入。这样可以保证去重。
+        self.collection.update({'weibo_id': item['weibo_id']}, {'$set': dict(item)}, True)
         return item
