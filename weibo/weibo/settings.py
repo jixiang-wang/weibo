@@ -21,7 +21,7 @@ ITEM_PIPELINES = {
 MONGODB_SERVER = 'localhost'
 MONGODB_PORT = 27017
 MONGODB_DB = 'one_weibo'
-MONGODB_COLLECTION = '慕课网'
+MONGODB_COLLECTION = 'papi'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 
@@ -43,7 +43,7 @@ RETRY_HTTP_CODES = [500, 503, 504, 400, 403, 404, 408]
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 0.5
+DOWNLOAD_DELAY = 0.2
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 CONCURRENT_REQUESTS_PER_IP = 32
